@@ -8,5 +8,18 @@
 
 .mainTopicHeader {
   padding-top: 16px;
-  color: blueviolet;
+}
+
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.listItem {
+  padding: 16px 0;
+  border-top: 1px solid gray;
+}
+
+.topicName {
+  font-weight: bold;
 }

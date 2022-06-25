@@ -5,8 +5,11 @@ import { useGetGitHubTopicByName } from './queries/topic';
 
 const ExploreTopic: NextPage = () => {
   const { data, error, loading } = useGetGitHubTopicByName({ name: 'react' });
-  const topic = data?.topic;
 
+  const topic = data?.topic;
+  const relatedtopics = topic?.relatedTopics;
+  console.log('relatedTopics: ', topic?.relatedTopics);
+  console.log('data: ', data);
   // TODO: handle errors and loading
 
   return (
@@ -19,9 +22,25 @@ const ExploreTopic: NextPage = () => {
 
       <div className={styles.pageContainer}>
         <h1 className={styles.pageHeader}>GitHub Topic Explorer</h1>
-        <h2 className={styles.mainTopicHeader}>{`Topic: ${topic?.name}`}</h2>
+        {topic?.name ? (
+          <h2 className={styles.mainTopicHeader}>{topic?.name}</h2>
+        ) : null}
         {/* TODO: Add search input */}
-        {/* TODO: Add search results list */}
+        <h3 className={styles.mainTopicHeader}>Related topics:</h3>
+        {relatedtopics && relatedtopics.length > 0 ? (
+          <ul className={styles.list}>
+            {relatedtopics?.map((topic) => (
+              <li key={topic?.id} className={styles.listItem}>
+                {topic?.name ? (
+                  <div className={styles.topicName}>{topic?.name}</div>
+                ) : null}
+                {topic?.stargazers?.totalCount ? (
+                  <div>stars: {topic?.stargazers?.totalCount}</div>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        ) : null}
       </div>
     </div>
   );

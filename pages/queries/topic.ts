@@ -1,4 +1,4 @@
-import { gql, useQuery } from '@apollo/client';
+import { gql, useQuery, QueryResult, OperationVariables } from '@apollo/client';
 
 export const GET_GITHUB_TOPIC_BY_NAME = gql`
   query ($name: String!) {
@@ -17,13 +17,35 @@ export const GET_GITHUB_TOPIC_BY_NAME = gql`
   }
 `;
 
-type UseGetGithubTopicByNameParams = {
+type GetGitHubTopicByNameParams = {
   name: string;
+};
+
+type RelatedTopic = {
+  id: string;
+  name: string;
+  stargazers: {
+    totalCount: number;
+  };
+};
+
+type Topic = {
+  id: string;
+  name: string;
+  relatedTopics: RelatedTopic[];
+  stargazerCount: number;
+};
+
+type GetGitHubTopicByNamesResult = {
+  topic: Topic;
 };
 
 export const useGetGitHubTopicByName = ({
   name,
-}: UseGetGithubTopicByNameParams) =>
-  useQuery(GET_GITHUB_TOPIC_BY_NAME, {
+}: GetGitHubTopicByNameParams): QueryResult<
+  GetGitHubTopicByNamesResult,
+  OperationVariables
+> =>
+  useQuery<GetGitHubTopicByNamesResult>(GET_GITHUB_TOPIC_BY_NAME, {
     variables: { name },
   });
