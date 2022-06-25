@@ -1,0 +1,12 @@
+.pageContainer {
+  padding: 16px;
+}
+
+.pageHeader {
+  text-align: left;
+}
+
+.mainTopicHeader {
+  padding-top: 16px;
+  color: blueviolet;
+}
