@@ -29,7 +29,6 @@ const ExploreTopic: NextPage = () => {
 
   const handleClickRelatedTopic = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
-      setSearchTerm(e.currentTarget.value);
       debouncer({ variables: { name: e.currentTarget.value } });
     },
     []
