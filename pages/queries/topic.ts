@@ -1,4 +1,12 @@
-import { gql, useQuery, QueryResult, OperationVariables } from '@apollo/client';
+import {
+  gql,
+  useQuery,
+  QueryResult,
+  OperationVariables,
+  useLazyQuery,
+  LazyQueryResult,
+  LazyQueryResultTuple,
+} from '@apollo/client';
 
 export const GET_GITHUB_TOPIC_BY_NAME = gql`
   query ($name: String!) {
@@ -49,3 +57,8 @@ export const useGetGitHubTopicByName = ({
   useQuery<GetGitHubTopicByNamesResult>(GET_GITHUB_TOPIC_BY_NAME, {
     variables: { name },
   });
+
+export const useLazyGetGitHubTopicByName = (): LazyQueryResultTuple<
+  GetGitHubTopicByNamesResult,
+  OperationVariables
+> => useLazyQuery<GetGitHubTopicByNamesResult>(GET_GITHUB_TOPIC_BY_NAME);

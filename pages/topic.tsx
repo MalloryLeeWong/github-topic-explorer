@@ -1,26 +1,34 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from '../styles/topic.module.css';
-import { useGetGitHubTopicByName } from './queries/topic';
+import {
+  useLazyGetGitHubTopicByName,
+} from './queries/topic';
+import debounce from 'lodash/debounce';
 
 const ExploreTopic: NextPage = () => {
   const [topic, setTopic] = useState('');
 
   // TODO: what if user enters zero as topic
-  const { data, error, loading } = useGetGitHubTopicByName({
-    name: topic || 'react',
-  });
+
+  const [search, { loading: lazyLoading, data: data }] =
+    useLazyGetGitHubTopicByName();
+
+  useEffect(() => {
+    search({ variables: { name: 'react' } });
+  }, []);
 
   const topicData = data?.topic;
   const relatedtopics = topicData?.relatedTopics;
-  console.log('relatedTopics: ', topicData?.relatedTopics);
-  console.log('data: ', data);
+
   // TODO: handle errors and loading
 
+  const debouncer = useCallback(debounce(search, 500), []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // add debounce here or on api call?
     setTopic(e.target.value);
+    debouncer({ variables: { name: e.target.value || 'react' } });
   };
 
   // TODO: refactor and move input, list into own components
@@ -34,9 +42,6 @@ const ExploreTopic: NextPage = () => {
 
       <div className={styles.pageContainer}>
         <h1 className={styles.pageHeader}>GitHub Topic Explorer</h1>
-        {topicData?.name ? (
-          <h2 className={styles.mainTopicHeader}>Topic: {topicData?.name}</h2>
-        ) : null}
         <div>
           <input
             type="search"
@@ -47,6 +52,10 @@ const ExploreTopic: NextPage = () => {
             value={topic}
           />
         </div>
+        {topicData?.name ? (
+          <h2 className={styles.mainTopicHeader}>Topic: {topicData?.name}</h2>
+        ) : null}
+
         <h3>Related topics:</h3>
         {relatedtopics && relatedtopics.length > 0 ? (
           <ul className={styles.list}>
@@ -61,7 +70,9 @@ const ExploreTopic: NextPage = () => {
               </li>
             ))}
           </ul>
-        ) : null}
+        ) : (
+          <p>No results found</p>
+        )}
       </div>
     </div>
   );
