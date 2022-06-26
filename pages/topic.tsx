@@ -2,15 +2,11 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
 import styles from '../styles/topic.module.css';
-import {
-  useLazyGetGitHubTopicByName,
-} from './queries/topic';
+import { useLazyGetGitHubTopicByName } from './queries/topic';
 import debounce from 'lodash/debounce';
 
 const ExploreTopic: NextPage = () => {
-  const [topic, setTopic] = useState('');
-
-  // TODO: what if user enters zero as topic
+  const [searchTerm, setSearchTerm] = useState('');
 
   const [search, { loading: lazyLoading, data: data }] =
     useLazyGetGitHubTopicByName();
@@ -19,17 +15,24 @@ const ExploreTopic: NextPage = () => {
     search({ variables: { name: 'react' } });
   }, []);
 
-  const topicData = data?.topic;
-  const relatedtopics = topicData?.relatedTopics;
+  const topic = data?.topic;
+  const relatedtopics = topic?.relatedTopics;
 
   // TODO: handle errors and loading
 
   const debouncer = useCallback(debounce(search, 500), []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTopic(e.target.value);
+    setSearchTerm(e.target.value);
     debouncer({ variables: { name: e.target.value || 'react' } });
   };
+
+  const handleClickRelatedTopic = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      debouncer({ variables: { name: e.currentTarget.value } });
+    },
+    []
+  );
 
   // TODO: refactor and move input, list into own components
   return (
@@ -49,11 +52,12 @@ const ExploreTopic: NextPage = () => {
             name="search-input"
             placeholder="Enter a topic"
             onChange={handleInputChange}
-            value={topic}
+            value={searchTerm}
           />
         </div>
-        {topicData?.name ? (
-          <h2 className={styles.mainTopicHeader}>Topic: {topicData?.name}</h2>
+
+        {topic?.name ? (
+          <h2 className={styles.mainTopicHeader}>Topic: {topic?.name}</h2>
         ) : null}
 
         <h3>Related topics:</h3>
@@ -62,7 +66,14 @@ const ExploreTopic: NextPage = () => {
             {relatedtopics?.map((topic) => (
               <li key={topic?.id} className={styles.listItem}>
                 {topic?.name ? (
-                  <div className={styles.topicName}>{topic?.name}</div>
+                  <button
+                    type="button"
+                    name={topic?.name}
+                    onClick={handleClickRelatedTopic}
+                    value={topic?.name}
+                  >
+                    {topic.name}
+                  </button>
                 ) : null}
                 {topic?.stargazers?.totalCount ? (
                   <div>stars: {topic?.stargazers?.totalCount}</div>
