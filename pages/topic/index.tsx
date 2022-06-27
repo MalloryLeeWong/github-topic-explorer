@@ -12,6 +12,7 @@ const ExploreTopic: NextPage = () => {
     useLazyGetGitHubTopicByName();
 
   useEffect(() => {
+    // Be default display topics related to react
     search({ variables: { name: 'react' } });
   }, []);
 
