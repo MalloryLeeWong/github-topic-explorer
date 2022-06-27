@@ -1,5 +1,5 @@
 import { SearchTopicResultsList } from './index';
-import TestRenderer, { act } from 'react-test-renderer';
+import TestRenderer from 'react-test-renderer';
 
 const DEFAULT_PROPS = {
   handleClickRelatedTopic: jest.fn(),
@@ -15,6 +15,10 @@ const PROPS_WITH_EMPTY_RELATED_TOPICS = {
   ...DEFAULT_PROPS,
   relatedTopics: [],
 };
+
+/* TODO: address warning recommending using react-test-renderer act method
+ * https://reactjs.org/docs/test-renderer.html#testrendereract
+ */
 
 describe('SearchTopicResultsList', () => {
   const testRendererDefault = TestRenderer.create(
