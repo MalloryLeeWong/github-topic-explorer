@@ -4,18 +4,18 @@ The GitHub Topic Explorer is a web application where you can search for and disc
 
 ## Technologies used
 
-- Next.js [https://nextjs.org/docs/api-reference/create-next-app](https://nextjs.org/docs/api-reference/create-next-app)
+- [Next.js](https://nextjs.org/)
 - React (functional components and hooks)
 - TypeScript
 - CSS modules
-- Apollo GraphQL Client and Hooks [https://www.apollographql.com/](https://www.apollographql.com/)
-- Jest [https://jestjs.io/](https://jestjs.io/)
-- React Test Renderer [https://reactjs.org/docs/test-renderer.html](https://reactjs.org/docs/test-renderer.html)
-- Lodash [https://lodash.com/](https://lodash.com/)
+- [Apollo GraphQL](https://www.apollographql.com/) (client and hooks)
+- [Jest](https://jestjs.io/)
+- [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
+- [Lodash](https://lodash.com/)
 - ES Lint
 - Babel
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Create Next App created the basic web application using Next.js, TypeScript, React, CSS modules, and ESLint.
+This is a Next.js project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Create Next App created the basic web application using Next.js, TypeScript, React, CSS modules, and ESLint.
 
 Apollo GraphQL Client was used to fetch and cache data about GitHub topics from the GitHub GraphQL API.
 
@@ -28,6 +28,15 @@ To support web accessibility, semantic HTML elements (JSX) were used where possi
 ## How to run the app
 
 1. Clone this repository
+
+2. To authenticate with the GitHub GraphQL server, create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)).
+
+In the apollo-client.js file of this project, add your token to the authorization field of the headers passed to the Apollo client instance:
+
+```bash
+authorization: `Bearer yourOwnToken`
+```
+
 2. Run the development server
 
 ```bash
