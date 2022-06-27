@@ -1,5 +1,5 @@
 import { SearchTopicResultsList } from './index';
-import TestRenderer from 'react-test-renderer';
+import TestRenderer, { act } from 'react-test-renderer';
 
 const TEST_PROPS = {
   handleClickRelatedTopic: jest.fn(),
@@ -12,18 +12,26 @@ const TEST_PROPS = {
 };
 
 describe('SearchTopicResultsList', () => {
-  it('returns a list', () => {
-    const testRenderer = TestRenderer.create(
-      <SearchTopicResultsList
-        isLoading={TEST_PROPS.isLoading}
-        relatedTopics={TEST_PROPS.relatedTopics}
-        handleClickRelatedTopic={TEST_PROPS.handleClickRelatedTopic}
-      />
-    );
+  const testRenderer = TestRenderer.create(
+    <SearchTopicResultsList
+      isLoading={TEST_PROPS.isLoading}
+      relatedTopics={TEST_PROPS.relatedTopics}
+      handleClickRelatedTopic={TEST_PROPS.handleClickRelatedTopic}
+    />
+  );
+  const testInstance = testRenderer.root;
 
+  it('returns a list if there are related topics provided', () => {
+    const list = testInstance.findAllByType('ul');
+
+    expect(list.length).toEqual(1);
+  });
+
+  it('returns a list with a list item for each related topic', () => {
     const testInstance = testRenderer.root;
 
-    const elementList = testInstance.findAllByType('li');
-    expect(elementList.length).toEqual(3);
+    const listItem = testInstance.findAllByType('li');
+
+    expect(listItem.length).toEqual(3);
   });
 });
