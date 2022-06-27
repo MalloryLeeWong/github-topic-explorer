@@ -8,6 +8,7 @@ import { SearchTopicResultsList } from './components/searchTopicResultsList';
 
 const ExploreTopic: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [clearSearch, setClearSearch] = useState(false);
 
   const [search, { loading, data: data }] = useLazyGetGitHubTopicByName();
 
@@ -24,12 +25,14 @@ const ExploreTopic: NextPage = () => {
   const debouncer = useCallback(debounce(search, 500), []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setClearSearch(false);
     setSearchTerm(e.target.value);
     debouncer({ variables: { name: e.target.value || 'react' } });
   };
 
   const handleClickRelatedTopic = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
+      setClearSearch(true);
       debouncer({ variables: { name: e.currentTarget.value } });
     },
     []
@@ -46,13 +49,17 @@ const ExploreTopic: NextPage = () => {
 
       <div className={styles.pageContainer}>
         <h1 className={styles.pageHeader}>GitHub Topic Explorer</h1>
+        <label htmlFor="search" className={styles.inputLabel}>
+          Search:
+        </label>
         <input
-          type="text"
-          id="search-input"
-          name="search-input"
-          placeholder="Enter a topic"
+          type="search"
+          id="search"
+          name="search"
+          placeholder="Search for a GitHub topic"
+          aria-label="Search for a GitHub topic"
           onChange={handleInputChange}
-          value={searchTerm}
+          value={clearSearch ? '' : searchTerm}
           className={styles.input}
         />
 
