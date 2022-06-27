@@ -6,19 +6,17 @@
   text-align: left;
 }
 
+.input {
+  margin-top: 16px;
+}
+
 .mainTopicHeader {
-  padding-top: 16px;
-  color: #3299ff;
+  margin-top: 32px;
 }
 
-.list {
-  padding: 0;
-  list-style: none;
-}
-
-.listItem {
-  padding: 16px 0;
-  border-top: 1px solid gray;
+.relatedTopicsHeader {
+  margin-top: 32px;
+  font-weight: normal;
 }
 
 .topicName {
