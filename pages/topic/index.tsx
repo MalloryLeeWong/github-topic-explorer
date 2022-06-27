@@ -6,22 +6,24 @@ import { useLazyGetGitHubTopicByName } from '../../queries/topic';
 import debounce from 'lodash/debounce';
 import { SearchTopicResultsList } from './components/searchTopicResultsList';
 
-const ExploreTopic: NextPage = () => {
+const ExploreTopicPage: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [clearSearch, setClearSearch] = useState(false);
 
   const [search, { loading, data: data }] = useLazyGetGitHubTopicByName();
 
   useEffect(() => {
-    // Be default display topics related to react
+    // Be default display topics related to react on mount
     search({ variables: { name: 'react' } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const topic = data?.topic;
   const relatedTopics = topic?.relatedTopics;
 
-  // TODO: handle errors and loading
+  // TODO: handle errors
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncer = useCallback(debounce(search, 500), []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,7 +37,7 @@ const ExploreTopic: NextPage = () => {
       setClearSearch(true);
       debouncer({ variables: { name: e.currentTarget.value } });
     },
-    []
+    [debouncer]
   );
 
   // TODO: refactor and move input, list into own components
@@ -78,4 +80,4 @@ const ExploreTopic: NextPage = () => {
   );
 };
 
-export default ExploreTopic;
+export default ExploreTopicPage;
