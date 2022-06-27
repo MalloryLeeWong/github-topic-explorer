@@ -1,6 +1,6 @@
 ## Welcome to the GitHub Topic Explorer!
 
-The GitHub Topic Explorer is a web application where you can search for and discover GitHub topics. Search for a term using the search bar and view a list of related topics and the number of stargazers for each of those related topics. You can also click on the name of a related topic to see related topics for that topic.
+The GitHub Topic Explorer is a web application where you can search for and discover GitHub topics. Search for a term using the search bar and view a list of related topics and the number of stargazers for each of those related topics. You can also click on the name of a related topic to see related topics for that topic. By default the page displays results for the topic 'react'.
 
 ## Technologies used
 
