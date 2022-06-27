@@ -29,15 +29,13 @@ To support web accessibility, semantic HTML elements (JSX) were used where possi
 
 1. Clone this repository
 
-2. To authenticate with the GitHub GraphQL server, create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)).
-
-In the apollo-client.js file of this project, add your token to the authorization field of the headers passed to the Apollo client instance:
+2. To authenticate with the GitHub GraphQL server, create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)). Then, in the `apollo-client.js` file of this project, add your token to the authorization field of the headers passed to the Apollo client instance:
 
 ```bash
 authorization: `Bearer yourOwnToken`
 ```
 
-2. Run the development server
+3. Run the development server
 
 ```bash
 npm run dev
@@ -45,7 +43,7 @@ npm run dev
 yarn dev
 ```
 
-3. Open [http://localhost:3000/topic](http://localhost:3000/topic) with your browser to run the app.
+4. Open [http://localhost:3000/topic](http://localhost:3000/topic) with your browser to run the app.
 
 Note: This application is also accessible and can be navigated by tabbing through elements on the page. If using Safari on a Mac, please first enable keyboard accessibility support [https://dequeuniversity.com/mac/keyboard-access-mac](https://dequeuniversity.com/mac/keyboard-access-mac))
 
