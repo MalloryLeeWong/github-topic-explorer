@@ -1,10 +1,7 @@
 import {
   gql,
-  useQuery,
-  QueryResult,
   OperationVariables,
   useLazyQuery,
-  LazyQueryResult,
   LazyQueryResultTuple,
 } from '@apollo/client';
 
@@ -25,10 +22,6 @@ export const GET_GITHUB_TOPIC_BY_NAME = gql`
   }
 `;
 
-type GetGitHubTopicByNameParams = {
-  name: string;
-};
-
 type RelatedTopic = {
   id: string;
   name: string;
@@ -47,16 +40,6 @@ type Topic = {
 type GetGitHubTopicByNamesResult = {
   topic: Topic;
 };
-
-export const useGetGitHubTopicByName = ({
-  name,
-}: GetGitHubTopicByNameParams): QueryResult<
-  GetGitHubTopicByNamesResult,
-  OperationVariables
-> =>
-  useQuery<GetGitHubTopicByNamesResult>(GET_GITHUB_TOPIC_BY_NAME, {
-    variables: { name },
-  });
 
 export const useLazyGetGitHubTopicByName = (): LazyQueryResultTuple<
   GetGitHubTopicByNamesResult,
