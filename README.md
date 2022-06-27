@@ -35,7 +35,15 @@ To support web accessibility, semantic HTML elements (JSX) were used where possi
 authorization: `Bearer yourOwnToken`
 ```
 
-3. Run the development server
+3. From the root of the project, install all dependencies
+
+```bash
+npm i
+# or
+yarn
+```
+
+4. Run the development server
 
 ```bash
 npm run dev
@@ -43,7 +51,7 @@ npm run dev
 yarn dev
 ```
 
-4. Open [http://localhost:3000/topic](http://localhost:3000/topic) with your browser to run the app.
+5. Open [http://localhost:3000/topic](http://localhost:3000/topic) with your browser to run the app.
 
 Note: This application is also accessible and can be navigated by tabbing through elements on the page. If using Safari on a Mac, please first enable keyboard accessibility support [https://dequeuniversity.com/mac/keyboard-access-mac](https://dequeuniversity.com/mac/keyboard-access-mac))
 
