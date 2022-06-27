@@ -37,10 +37,10 @@ export const SearchTopicResultsList: React.FC<SearchResultsListProps> = ({
             {topic?.stargazers?.totalCount ? (
               <div className={styles.starsContainer}>
                 <Image
-                  src="/star.png"
+                  src="/star-icon.png"
                   alt="star-icon"
-                  width="16px"
-                  height="16px"
+                  width="20px"
+                  height="20px"
                 />
                 <div className={styles.stargazersCount}>
                   {topic?.stargazers?.totalCount?.toLocaleString('en-US')}
