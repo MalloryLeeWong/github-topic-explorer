@@ -1,0 +1,26 @@
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.listItem {
+  padding: 16px 0;
+  max-width: 1024px;
+  border-top: 1px solid lightgray;
+}
+
+.button {
+  border-radius: 20px;
+  border: 1px solid lightgrey;
+  padding: 8px;
+}
+
+.starsContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: row;
+}
+
+.stargazersCount {
+  margin-left: 4px;
+}

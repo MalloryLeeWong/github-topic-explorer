@@ -22,7 +22,7 @@ export const GET_GITHUB_TOPIC_BY_NAME = gql`
   }
 `;
 
-type RelatedTopic = {
+export type RelatedTopic = {
   id: string;
   name: string;
   stargazers: {
