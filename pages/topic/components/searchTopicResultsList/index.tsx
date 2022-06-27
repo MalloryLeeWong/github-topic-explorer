@@ -42,7 +42,10 @@ export const SearchTopicResultsList: React.FC<SearchResultsListProps> = ({
                   width="20px"
                   height="20px"
                 />
-                <div className={styles.stargazersCount}>
+                <div
+                  className={styles.stargazersCount}
+                  id="related-topic-stargazers-count"
+                >
                   {topic?.stargazers?.totalCount?.toLocaleString('en-US')}
                 </div>
               </div>

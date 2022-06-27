@@ -57,13 +57,14 @@ describe('ExploreTopicPage', () => {
     expect(searchInput.props.value).toEqual('cheese');
   });
 
-  it('returns a list if there are related topics for a topic', () => {
+  it('shows a list if there are related topics for a topic', () => {
     const list = testInstance.findAllByType('ul');
     expect(list.length).toEqual(1);
   });
 
-  it('returns a list with a list item for each related topic', () => {
-    const listItem = testInstance.findAllByType('li');
-    expect(listItem.length).toEqual(3);
+  it('shows a list with a list item for each related topic', () => {
+    const listItems = testInstance.findAllByType('li');
+    expect(listItems.length).toEqual(3);
+    expect(listItems[0])
   });
 });

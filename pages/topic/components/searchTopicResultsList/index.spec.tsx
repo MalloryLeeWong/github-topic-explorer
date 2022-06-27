@@ -42,18 +42,39 @@ describe('SearchTopicResultsList', () => {
   const testInstanceWithEmptyRelatedTopics =
     testRendererWithEmptyRelatedTopics.root;
 
-  it('returns a list if there are related topics provided', () => {
-    const list = testInstanceDefault.findAllByType('ul');
-    expect(list.length).toEqual(1);
+  describe('if there are more than zero related topics', () => {
+    it('lists all related topics', () => {
+      const list = testInstanceDefault.findAllByType('ul');
+      expect(list.length).toEqual(1);
+    });
+
+    it('shows the name of each related topic', () => {
+      const listItems = testInstanceDefault.findAllByType('li');
+      expect(listItems.length).toEqual(3);
+
+      const buttons = testInstanceDefault.findAllByType('button');
+
+      expect(buttons[0].children[0]).toEqual('cheddar');
+      expect(buttons[1].children[0]).toEqual('pizza');
+      expect(buttons[2].children[0]).toEqual('delicious');
+    });
+
+    it('shows the stargazers count for each related topic', () => {
+      const stargazerCountElements = testInstanceDefault.findAllByProps({
+        id: 'related-topic-stargazers-count',
+      });
+
+      expect(stargazerCountElements.length).toEqual(3);
+      expect(stargazerCountElements[0].children[0]).toEqual('10');
+      expect(stargazerCountElements[1].children[0]).toEqual('20');
+      expect(stargazerCountElements[2].children[0]).toEqual('30');
+    });
   });
 
-  it('returns a list with a list item for each related topic', () => {
-    const listItem = testInstanceDefault.findAllByType('li');
-    expect(listItem.length).toEqual(3);
-  });
-
-  it('does not return a list if length of relatedTopics is zero', () => {
-    const list = testInstanceWithEmptyRelatedTopics.findAllByType('ul');
-    expect(list.length).toEqual(0);
+  describe('if there are zero related topics', () => {
+    it('does not show any related topics', () => {
+      const list = testInstanceWithEmptyRelatedTopics.findAllByType('ul');
+      expect(list.length).toEqual(0);
+    });
   });
 });
