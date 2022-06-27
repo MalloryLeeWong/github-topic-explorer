@@ -6,7 +6,7 @@ import { useLazyGetGitHubTopicByName } from '../../queries/topic';
 import debounce from 'lodash/debounce';
 import { SearchTopicResultsList } from './components/searchTopicResultsList';
 
-const ExploreTopic: NextPage = () => {
+const ExploreTopicPage: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [clearSearch, setClearSearch] = useState(false);
 
@@ -80,4 +80,4 @@ const ExploreTopic: NextPage = () => {
   );
 };
 
-export default ExploreTopic;
+export default ExploreTopicPage;
