@@ -35,13 +35,26 @@ jest.mock('../../queries/topic/index.ts', () => ({
   },
 }));
 
+/* TODO: finish addressing warning recommending using react-test-renderer act method
+ * https://reactjs.org/docs/test-renderer.html#testrendereract
+ */
+
 describe('ExploreTopicPage', () => {
   const testRenderer = TestRenderer.create(<ExploreTopicPage />);
   const testInstance = testRenderer.root;
 
-  it('user can enter text into an input to search for a topic', () => {
-    const list = testInstance.findAllByType('input');
-    expect(list.length).toEqual(1);
+  it('allows a user to input text into a search input field', () => {
+    const searchInput = testInstance.findByType('input');
+
+    expect(searchInput).toBeDefined();
+    expect(searchInput.props.value).toEqual('');
+
+    const mockChangeEvent = { target: { value: 'cheese' } };
+    TestRenderer.act(() => {
+      searchInput.props.onChange(mockChangeEvent);
+    });
+
+    expect(searchInput.props.value).toEqual('cheese');
   });
 
   it('returns a list if there are related topics for a topic', () => {
