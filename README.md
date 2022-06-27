@@ -1,8 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Welcome to the GitHub Topic Explorer!
 
-## Getting Started
+The GitHub Topic Explorer is a web application where you can search for and discover GitHub topics. Search for a term using the search bar and view a list of related topics and the number of stargazers for each of those related topics. You can also click on the name of a related topic to see related topics for that topic.
 
-First, run the development server:
+## Technologies used
+
+- Next.js [https://nextjs.org/docs/api-reference/create-next-app](https://nextjs.org/docs/api-reference/create-next-app)
+- React (functional components and hooks)
+- TypeScript
+- CSS modules
+- Apollo GraphQL Client and Hooks [https://www.apollographql.com/](https://www.apollographql.com/)
+- Jest [https://jestjs.io/](https://jestjs.io/)
+- React Test Renderer [https://reactjs.org/docs/test-renderer.html](https://reactjs.org/docs/test-renderer.html)
+- Lodash [https://lodash.com/](https://lodash.com/)
+- ES Lint
+- Babel
+
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Create Next App created the basic web application using Next.js, TypeScript, React, CSS modules, and ESLint.
+
+Apollo GraphQL Client was used to fetch and cache data about GitHub topics from the GitHub GraphQL API.
+
+Lodash was used to create logic that debounces a user's search input to wait until a user is likely done entering a search term before querying for new search results to minimize the number of API calls made.
+
+Jest was used to write tests for the core functional and visual requirements. A few babel presets and plugins were added to what comes with the Next.js app in order to run the Jest tests on React components built with TypesCript and JSX.
+
+To support web accessibility, semantic HTML elements (JSX) were used where possible for each feature. To provide additional screen reader support, the aria-attribute label was added to the input element and a visually hidden label element was added above the input for a screen reader to first read. Elements were also styled with significant color contrast. A user can use a keyboard instead of a mouse for all of the core functionalities of the application.
+
+## How to run the app
+
+1. Clone this repository
+2. Run the development server
 
 ```bash
 npm run dev
@@ -10,25 +36,15 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Open [http://localhost:3000/topic](http://localhost:3000/topic) with your browser to run the app.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+Note: This application is also accessible and can be navigated by tabbing through elements on the page. If using Safari on a Mac, please first enable keyboard accessibility support [https://dequeuniversity.com/mac/keyboard-access-mac](https://dequeuniversity.com/mac/keyboard-access-mac))
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Future improvements
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+In the future, additional improvements could be made to enhance features in this application, such as:
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Add a query parameter for the search term to the page URL, so a user could navigate to a version of the explore topics page by query parameter and on page load see results for that specific term
+- Replace default clear search button that comes with the default input element with a clear search button that can be focused and selected via tabbing on a keyboard (currently the default behavior doesn't allow this so a user has to manually delete the search text entered)
+- If additional features were to be added to the application that also used a list and input, once confirming the product and design requirements, create global reusable components for a list, basic input, and search input (or use a third party library)
+- Replace the simple loading message with progressive loading indicators, so for example each list row shows a gray rectangle for the content loading, so the user can see more of the list items that should be loading.
