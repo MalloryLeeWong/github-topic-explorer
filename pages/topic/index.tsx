@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
-import styles from '../styles/topic.module.css';
-import { useLazyGetGitHubTopicByName } from './queries/topic';
+import styles from './index.module.css';
+import { useLazyGetGitHubTopicByName } from '../../queries/topic';
 import debounce from 'lodash/debounce';
 
 const ExploreTopic: NextPage = () => {
