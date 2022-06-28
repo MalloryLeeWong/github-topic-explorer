@@ -9,6 +9,7 @@ The GitHub Topic Explorer is a web application where you can search for and disc
 - TypeScript
 - CSS modules
 - [Apollo GraphQL](https://www.apollographql.com/) (client and hooks)
+- [GitHub GraphQL API](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#the-graphql-endpoint)
 - [Jest](https://jestjs.io/)
 - [React Test Renderer](https://reactjs.org/docs/test-renderer.html)
 - [Lodash](https://lodash.com/)
@@ -29,11 +30,9 @@ To support web accessibility, semantic HTML elements (JSX) were used where possi
 
 1. Clone this repository
 
-2. To authenticate with the GitHub GraphQL server, create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)). Then, in the `apollo-client.js` file of this project, add your token to the authorization field of the headers passed to the Apollo client instance:
-
-```bash
-authorization: `Bearer yourOwnToken`
-```
+2. To authenticate with the GitHub GraphQL server:
+- create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)).
+- Pass the key you created to the `authorization` header of the Apollo Client instance created in the file `apollo-client.js`.
 
 3. From the root of the project, install all dependencies
 
@@ -55,6 +54,16 @@ yarn dev
 
 Note: This application is also accessible and can be navigated by tabbing through elements on the page. If using Safari on a Mac, please first enable keyboard accessibility support [https://dequeuniversity.com/mac/keyboard-access-mac](https://dequeuniversity.com/mac/keyboard-access-mac))
 
+## How to test the app
+
+To run unit tests:
+
+```bash
+npm run test
+# or
+yarn test
+```
+
 ## Future improvements
 
 In the future, additional improvements could be made to enhance features in this application, such as:
@@ -63,3 +72,4 @@ In the future, additional improvements could be made to enhance features in this
 - Replace default clear search button that comes with the default input element with a clear search button that can be focused and selected via tabbing on a keyboard (currently the default behavior doesn't allow this so a user has to manually delete the search text entered)
 - If additional features were to be added to the application that also used a list and input, once confirming the product and design requirements, create global reusable components for a list, basic input, and search input (or use a third party library)
 - Replace the simple loading message with progressive loading indicators, so for example each list row shows a gray rectangle for the content loading, so the user can see more of the list items that should be loading.
+- Enhance API error handling by replacing the simple error alert message with a nicer looking modal or error page to improve the user experience
