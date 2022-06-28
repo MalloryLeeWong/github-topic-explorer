@@ -95,6 +95,6 @@ Additional features:
 
 ## Screenshots
 
-![Screenshot of topic search page with react results displayed by default](/demo-screenshot-default-react.jpg "The page displays results for 'react' topic by default")
+![Screenshot of topic search page with react results displayed by default](public/demo-screenshot-default-react.jpg "The page displays results for 'react' topic by default")
 
-![Screenshot of topic search page when a user has entered a search term](/demo-screenshot-search-term.jpg "Page displays results for the search term 'ai'")
+![Screenshot of topic search page when a user has entered a search term](public/demo-screenshot-search-term.jpg "Page displays results for the search term 'ai'")
