@@ -31,7 +31,7 @@ To support web accessibility, semantic HTML elements (JSX) were used where possi
 1. Clone this repository
 
 2. To authenticate with the GitHub GraphQL server:
-- create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql)).
+- create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql).
 - Pass the key you created to the `authorization` header of the Apollo Client instance created in the file `apollo-client.js`.
 
 3. From the root of the project, install all dependencies
