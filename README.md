@@ -95,10 +95,14 @@ Additional features:
 
 ## Screenshots
 
+Desktop default view:
 ![Screenshot of topic search page with react results displayed by default](public/demo-screenshot-default-react.jpg "The page displays results for 'react' topic by default")
 
+Desktop view when searching for a term e.g. 'ai':
 ![Screenshot of topic search page when a user has entered a search term](public/demo-screenshot-search-term.jpg "Page displays results for the search term 'ai'")
 
-![Screenshot of topic search page in mobile view](public/demo-screenshot-mobile.jpg 'Mobile view')
+Mobile view:
+![Screenshot of topic search page in mobile view](public/demo-screenshot-mobile-view.jpg 'Mobile view')
 
-![Screenshot of topic search page in tablet view](public/demo-screenshot-tablet.jpg "Tablet view'")
+Tablet view:
+![Screenshot of topic search page in tablet view](public/demo-screenshot-tablet-view.jpg "Tablet view'")
