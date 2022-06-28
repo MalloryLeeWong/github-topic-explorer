@@ -53,7 +53,7 @@ yarn dev
 
 5. Open [http://localhost:3000/topic](http://localhost:3000/topic) with your browser to run the app.
 
-Note: This application is also accessible and can be navigated by tabbing through elements on the page. If using Safari on a Mac, please first enable keyboard accessibility support [https://dequeuniversity.com/mac/keyboard-access-mac](https://dequeuniversity.com/mac/keyboard-access-mac))
+Note: This application is also accessible and can be navigated by tabbing through elements on the page. If using Safari on a Mac, please first enable keyboard accessibility support [instructions here](https://dequeuniversity.com/mac/keyboard-access-mac)
 
 ## How to test the app
 
@@ -88,9 +88,9 @@ Additional features:
 - Display more background information about the main topic.
 - Display the most starred GitHub repositories related to a topic or related topic.
 - Replace the simple loading message with progressive loading indicators, so for example each list row shows a gray rectangle for the content loading, so the user can see more of the list items that should be loading.
-- Enhance API error handling by replacing the simple error alert message with a nicer looking modal or error page to improve the user ex
-- Add a query parameter for the search term to the page URL, so a user could navigate to a version of the explore topics page by query parameter and on page load see results for that specific term
-- Replace default clear search button that comes with the default input element with a clear search button that can be focused and selected via tabbing on a keyboard (currently the default behavior doesn't allow this so a user has to manually delete the search text entered)
+- Enhance API error handling by replacing the simple error alert message with a nicer looking modal or error page to improve the user experience.
+- Add a query parameter for the search term to the page URL, so a user could navigate to a version of the explore topics page by query parameter and on page load see results for that specific term.
+- Replace default clear search button that comes with the default input element with a clear search button that can be focused and selected via tabbing on a keyboard (currently the default behavior doesn't allow this so a user has to manually delete the search text entered).
 - Improve the visual design and styling. This project was created with a rudimentary design to focus on showcasing the functional and architectural aspects of the project.
 
 ## Screenshots
@@ -98,3 +98,7 @@ Additional features:
 ![Screenshot of topic search page with react results displayed by default](public/demo-screenshot-default-react.jpg "The page displays results for 'react' topic by default")
 
 ![Screenshot of topic search page when a user has entered a search term](public/demo-screenshot-search-term.jpg "Page displays results for the search term 'ai'")
+
+![Screenshot of topic search page in mobile view](public/demo-screenshot-mobile.jpg 'Mobile view')
+
+![Screenshot of topic search page in tablet view](public/demo-screenshot-tablet.jpg "Tablet view'")
