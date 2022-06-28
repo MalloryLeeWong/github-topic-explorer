@@ -20,7 +20,9 @@ const ExploreTopicPage: NextPage = () => {
 
   useEffect(() => {
     if (error) {
-      alert('Error occured. Please try again later.');
+      alert(
+        'Error occured while trying to fetch data. Please see the instructions in the project README to ensure that all steps to access the API are completed or try again later.'
+      );
     }
   }, [error]);
 
@@ -49,7 +51,7 @@ const ExploreTopicPage: NextPage = () => {
       <Head>
         <title>Github Topic Explorer</title>
         <meta name="Github Topic Explorer" content="Github Topic Explorer" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/star-icon.png" />
       </Head>
 
       <div className={styles.pageContainer}>
