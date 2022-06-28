@@ -10,18 +10,22 @@ const ExploreTopicPage: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [clearSearch, setClearSearch] = useState(false);
 
-  const [search, { loading, data: data }] = useLazyGetGitHubTopicByName();
+  const [search, { loading, data, error }] = useLazyGetGitHubTopicByName();
 
   useEffect(() => {
-    // Be default display topics related to react on mount
+    // Be default display topics related to react
     search({ variables: { name: 'react' } });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    if (error) {
+      alert('Error occured. Please try again later.');
+    }
+  }, [error]);
+
   const topic = data?.topic;
   const relatedTopics = topic?.relatedTopics;
-
-  // TODO: handle errors
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncer = useCallback(debounce(search, 500), []);
@@ -40,7 +44,6 @@ const ExploreTopicPage: NextPage = () => {
     [debouncer]
   );
 
-  // TODO: refactor and move input, list into own components
   return (
     <div className={styles.container}>
       <Head>
