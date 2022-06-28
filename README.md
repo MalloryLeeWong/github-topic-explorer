@@ -16,21 +16,22 @@ The GitHub Topic Explorer is a web application where you can search for and disc
 - ES Lint
 - Babel
 
-This is a Next.js project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Create Next App created the basic web application using Next.js, TypeScript, React, CSS modules, and ESLint.
+This is a Next.js project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Create Next App was utilized to create the initial basic web application skeleton using Next.js, TypeScript, React, CSS modules, and ESLint. Next.js was chosen as the framework to build a React application because it comes with easy-to-use built-in page routing, as well as more flexible options for configuration and improving performance, which could be helpful if the application is extended or scaled in the future.
 
-Apollo GraphQL Client was used to fetch and cache data about GitHub topics from the GitHub GraphQL API.
+Apollo GraphQL Client was used to fetch and cache data about GitHub topics from the GitHub GraphQL API. The cache management helps to reduce the number of API network calls needed.
 
 Lodash was used to create logic that debounces a user's search input to wait until a user is likely done entering a search term before querying for new search results to minimize the number of API calls made.
 
-Jest was used to write tests for the core functional and visual requirements. A few babel presets and plugins were added to what comes with the Next.js app in order to run the Jest tests on React components built with TypesCript and JSX.
+Jest was used to write unit tests for the core functional requirements. A few babel presets and plugins were also added to what comes by default with the Next.js app in order to run the Jest tests on React components with TypesCript and JSX.
 
-To support web accessibility, semantic HTML elements (JSX) were used where possible for each feature. To provide additional screen reader support, the aria-attribute label was added to the input element and a visually hidden label element was added above the input for a screen reader to first read. Elements were also styled with significant color contrast. A user can use a keyboard instead of a mouse for all of the core functionalities of the application.
+To support web accessibility, semantic HTML elements (JSX) were used where possible for each feature. To provide additional screen reader support, the `aria-label` attribute was added to the input element, and a label element was added above the input for a screen reader to first read (although it the element is visually hidden in the UI for aesthetic purposes). Elements were also styled with significant color contrast. A user can use a keyboard instead of a mouse for all of the core functionalities of the application.
 
 ## How to run the app
 
 1. Clone this repository
 
 2. To authenticate with the GitHub GraphQL server:
+
 - create a personal access token with the scopes specified in the [GitHub API docs](https://docs.github.com/en/graphql/guides/forming-calls-with-graphql#authenticating-with-graphql).
 - Pass the key you created to the `authorization` header of the Apollo Client instance created in the file `apollo-client.js`.
 
