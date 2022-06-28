@@ -82,6 +82,7 @@ Code structuring / refactoring:
 - If additional features were to be added to the application that also used a list and input, once confirming the product and design requirements, create global reusable components for a list, basic input, and search input (or use a third party library). Save these in a new directory in the project root or consider creating a separate UI library project for these to import into the web application.
 - If more APIs need to be accessed via GraphQL in the future, reorganize the project in a way that will create a GraphQL API gateway that can query multiple data sources, so each data source will fetch data from the relevant API. This project was set up to demo simply querying one GitHub GraphQL API. In the future if this project is scaled, adding resolver functions to handle manipulating more complex data before returning it to the UI.
 - Create global types file for commonly used TypeScript types.
+- Add clear focus style on clicking a button for a related topic. Right now only tabbing the buttons shows a clear focus style for the element.
 
 Additional features:
 
